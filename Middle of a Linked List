@@ -1,0 +1,25 @@
+# JAVA Solution
+
+class Solution {
+    int getMiddle(Node head) {
+        // Edge case: if the list is empty, return -1 (or any indication of an empty list)
+        if (head == null) {
+            return -1;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        // Traverse the list: fast moves 2 steps, slow moves 1 step
+        while (fast != null && fast.next != null) {
+            slow = slow.next;       // Move slow by 1 step
+            fast = fast.next.next;  // Move fast by 2 steps
+        }
+
+        // At the end of the loop, slow will be at the middle
+        return slow.data;  // Assuming the Node contains an integer 'data' field
+    }
+}
+
+Expected Time Complexity: O(n)
+Expected Auxiliary Space: O(1)
